@@ -1,5 +1,7 @@
 import { processBfhl } from "@/lib/bfhl/index"
 
+export const runtime = "edge";
+
 export async function GET() {
   return Response.json({ operation_code: 1 })
 }
