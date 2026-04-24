@@ -5,6 +5,7 @@ import { makeTree, getDepth } from "./tree"
 type Hierarchy = {
   root: string
   tree: Record<string, unknown>
+  edges: [string, string][]
   depth?: number
   has_cycle?: true
 }
@@ -32,15 +33,16 @@ export function processBfhl(data: string[]): BfhlResult {
 
   for (let comp of components) {
     const roots = [...comp].filter(n => !childSet.has(n)).sort()
+    const compEdges = usedEdges.filter(([a, b]) => comp.has(a) && comp.has(b))
 
     if (hasCycle(comp, adj)) {
       const root = [...comp].sort()[0]
-      hierarchies.push({ root, tree: {}, has_cycle: true })
+      hierarchies.push({ root, tree: {}, edges: compEdges, has_cycle: true })
     } else {
       const root = roots[0]
       const tree = makeTree(root, adj)
       const depth = getDepth(root, adj)
-      hierarchies.push({ root, tree, depth })
+      hierarchies.push({ root, tree, edges: compEdges, depth })
     }
   }
 

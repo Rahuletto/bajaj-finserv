@@ -2,7 +2,42 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #37352f;
+  --muted: #787774;
+  --border: #e3e2e0;
+  --card: #ffffff;
+  --card-hover: #fafafa;
+  --badge-green: #dbeddb;
+  --badge-green-text: #1e6b3a;
+  --badge-red: #fce4e4;
+  --badge-red-text: #c4314b;
+  --badge-yellow: #fdecc8;
+  --badge-yellow-text: #9b6e23;
+  --code-bg: #f7f6f3;
+  --json-key: #9065b0;
+  --json-string: #448361;
+  --json-number: #2e6fba;
+  --json-bool: #cb6f10;
+}
+
+.dark {
+  --background: #191919;
+  --foreground: #e3e2e0;
+  --muted: #9b9a97;
+  --border: #2f2f2f;
+  --card: #202020;
+  --card-hover: #262626;
+  --badge-green: #1e3a29;
+  --badge-green-text: #4daa6f;
+  --badge-red: #3d1f24;
+  --badge-red-text: #e06c75;
+  --badge-yellow: #3d2e14;
+  --badge-yellow-text: #e0a64d;
+  --code-bg: #1e1e1e;
+  --json-key: #c5a5e0;
+  --json-string: #7ec699;
+  --json-number: #6cb6ff;
+  --json-bool: #e0a64d;
 }
 
 @theme inline {
@@ -12,15 +47,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background 0.2s, color 0.2s;
 }
