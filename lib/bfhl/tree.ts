@@ -1,12 +1,16 @@
 type TreeNode = { [key: string]: TreeNode }
 
 export function makeTree(root: string, adj: Map<string, string[]>): TreeNode {
-  const kids = adj.get(root) || []
+  return { [root]: buildChildren(root, adj) }
+}
+
+function buildChildren(node: string, adj: Map<string, string[]>): TreeNode {
+  const kids = adj.get(node) || []
   const obj: TreeNode = {}
   for (let k of kids) {
-    obj[k] = makeTree(k, adj)
+    obj[k] = buildChildren(k, adj)
   }
-  return { [root]: obj }
+  return obj
 }
 
 export function getDepth(node: string, adj: Map<string, string[]>): number {
