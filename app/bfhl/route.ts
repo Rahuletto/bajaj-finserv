@@ -1,4 +1,4 @@
-import { processBfhl } from "@/lib/bfhl"
+import { processBfhl } from "@/lib/bfhl/index"
 
 export async function GET() {
   return Response.json({ operation_code: 1 })
